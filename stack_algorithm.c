@@ -189,7 +189,7 @@ void printStack()
 	}
 }
 
-uint8_t balancedParentheses(uint8_t* expression)
+uint8_t* balancedParentheses(uint8_t* expression)
 {
 	uint8_t u8_Index;
 	for (u8_Index = 0 ; u8_Index < strlen(expression) - 1 ; u8_Index++)
@@ -216,11 +216,11 @@ uint8_t balancedParentheses(uint8_t* expression)
 	}
 	if(gpstr_Head == NULL)
 	{
-		printf("\nParenthesis are balanced\n");
+		return "\nBalanced\n";
 	}
 	else 
 	{
-		printf("\nParenthesis are not balanced\n");
+		return "\nNot balanced\n";
 	}
 }
 
@@ -233,10 +233,11 @@ uint8_t balancedParentheses(uint8_t* expression)
 uint8_t main()
 {	
 	uint8_t u8_Line[256];
+	uint8_t au8_Result[20];
 	gu16_StackSize  = select_stack_size();
 	printf("\nEnter a string: ");
 	fgets(u8_Line,sizeof(u8_Line),stdin);
-	balancedParentheses(u8_Line);
-
+	strcpy(au8_Result, balancedParentheses(u8_Line));
+	printf("%s",au8_Result);
 	return 0;
 }

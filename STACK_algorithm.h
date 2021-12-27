@@ -58,7 +58,7 @@ uint16_t select_stack_size ();                                 // This function 
 void push (uint8_t u8_data);                                   // This function pushes data to the stack by means of a linked list
 uint8_t pull ();                                               // This function pulls data from the stack by means of a linked list
 void printStack();                                             // This function prints the current stack
-uint8_t balancedParentheses(uint8_t* expression);              // This function checks whether the expression passed to it is balanced or not, this is achieved by popping each opening and closing pair, if the stack is empty then the expression is balanced. otherwise, not balanced.
+uint8_t* balancedParentheses(uint8_t* expression);              // This function checks whether the expression passed to it is balanced or not, this is achieved by popping each opening and closing pair, if the stack is empty then the expression is balanced. otherwise, not balanced.
 
 /**************************************************************/
 /*                                                            */

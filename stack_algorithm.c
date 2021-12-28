@@ -200,17 +200,22 @@ uint8_t* balancedParentheses(uint8_t* expression)
 		}
 		else if( ( expression[u8_Index] == '}' ) ||  ( expression[u8_Index] == ')' ) || ( expression[u8_Index] == ']') )
 		{
-			gstrNode_t* pstr_Ptr = gpstr_Head;
-			if(pstr_Ptr != NULL)
+			push(expression[u8_Index]);
+			if (gpstr_Head != NULL)
 			{
-		        while(pstr_Ptr->pstr_next != NULL)
+			gstrNode_t* pstr_Ptr = gpstr_Head;
+			if((pstr_Ptr -> pstr_next) != NULL)
+			{
+		        while((pstr_Ptr->pstr_next)->pstr_next != NULL)
 		        {
 			        pstr_Ptr = pstr_Ptr->pstr_next;
 		        }
-			    if((((pstr_Ptr->u8_Data) == '{') && (expression[u8_Index] == '}')) || (((pstr_Ptr->u8_Data) == '[') && (expression[u8_Index] == ']')) || (((pstr_Ptr->u8_Data) == '(') && (expression[u8_Index] == ')')))
+			    if((((pstr_Ptr->u8_Data) == '{') && (((pstr_Ptr->pstr_next)->u8_Data) == '}')) || (((pstr_Ptr->u8_Data) == '[') && (((pstr_Ptr->pstr_next)->u8_Data) == ']')) || (((pstr_Ptr->u8_Data) == '(') && ((pstr_Ptr->pstr_next)->u8_Data == ')')))
 		        {
 			        pull();
+					pull();
 		        }
+			}
 			}
 		}
 	}
